@@ -21,3 +21,13 @@ jobs:
 
     - name: Build APK
       run: make tailscale-debug.apk
+
+
+    - name: Upload Release
+      uses: softprops/action-gh-release@v1
+      if: ${{ success() }}
+      with:
+        tag_name: latest
+        files: tailscale-debug.apk
+        release: true
+        repository: ${{ github.actor }}/tailscale-android
