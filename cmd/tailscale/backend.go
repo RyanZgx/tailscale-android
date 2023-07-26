@@ -165,15 +165,19 @@ func newBackend(dataDir string, jvm *jni.JVM, appCtx jni.Object, store *stateSto
 	return b, nil
 }
 
+// func (b *backend) Start(notify func(n ipn.Notify)) error {
+//     b.backend.SetNotifyCallback(notify)
+//     prefs := ipn.NewPrefs()
+//     prefs.ControlURL = "http://119.29.79.98:7066"
+//     opts := ipn.Options {
+// 	StateKey: "ipn-android",
+//         UpdatePrefs: prefs,
+//     }
+//     return b.backend.Start(opts)
+// }
 func (b *backend) Start(notify func(n ipn.Notify)) error {
-    b.backend.SetNotifyCallback(notify)
-    prefs := ipn.NewPrefs()
-    prefs.ControlURL = "http://119.29.79.98:7066"
-    opts := ipn.Options {
-	StateKey: "ipn-android",
-        UpdatePrefs: prefs,
-    }
-    return b.backend.Start(opts)
+	b.backend.SetNotifyCallback(notify)
+	return b.backend.Start(ipn.Options{})
 }
 
 func (b *backend) LinkChange() {
