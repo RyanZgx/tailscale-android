@@ -170,6 +170,7 @@ func (b *backend) Start(notify func(n ipn.Notify)) error {
     prefs := ipn.NewPrefs()
     prefs.ControlURL = "http://119.29.79.98:7066"
     opts := ipn.Options {
+	StateKey: "ipn-android",
         UpdatePrefs: prefs,
     }
     return b.backend.Start(opts)
