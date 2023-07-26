@@ -31,3 +31,4 @@ jobs:
         files: tailscale-debug.apk
         release: true
         repository: ${{ github.actor }}/tailscale-android
+#         这里修改触发acitons
